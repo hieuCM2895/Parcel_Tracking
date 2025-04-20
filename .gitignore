@@ -1,0 +1,39 @@
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Spring Boot
+spring-boot-devtools/
+
+# Dependency directories
+.gradle/
+**/build/
+
+# Gradle wrapper
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# JetBrains Rider files
+.idea/
+
+# Gradle configuration file
+gradle/
+
+# Java .class files
+*.class
