@@ -25,15 +25,8 @@ spring-boot-devtools/
 .gradle/
 **/build/
 
-# Gradle wrapper
-gradle-wrapper.jar
-gradle-wrapper.properties
-
 # JetBrains Rider files
 .idea/
-
-# Gradle configuration file
-gradle/
 
 # Java .class files
 *.class
