@@ -29,5 +29,5 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
 
-      - name: Build and run unit & integration tests
-        run: ./gradlew test --no-daemon
+      - name: Build and run unit & integration tests with JaCoCo
+        run: ./gradlew test jacocoTestReport --no-daemon

@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "Parcel Tracking API",
+    "description": "Collection of requests for Parcel Tracking Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Guest Management",
+      "item": [
+        {
+          "name": "Check-in Guest",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"guest-101\",\n  \"fullName\": \"John Doe\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/guests/checkin",
+              "host": ["{{baseUrl}}"],
+              "path": ["guests", "checkin"]
+            }
+          }
+        },
+        {
+          "name": "Get Guest Check-in Status",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/guests/guest-101/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["guests", "guest-101", "status"]
+            }
+          }
+        },
+        {
+          "name": "Check-out Guest",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/guests/guest-101/checkout",
+              "host": ["{{baseUrl}}"],
+              "path": ["guests", "guest-101", "checkout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Parcel Management",
+      "item": [
+        {
+          "name": "Receive Parcel",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"parcel-5001\",\n  \"guest\": {\n    \"id\": \"guest-101\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/parcels",
+              "host": ["{{baseUrl}}"],
+              "path": ["parcels"]
+            }
+          }
+        },
+        {
+          "name": "List Parcels by Guest",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/parcels/guest/guest-101",
+              "host": ["{{baseUrl}}"],
+              "path": ["parcels", "guest", "guest-101"]
+            }
+          }
+        },
+        {
+          "name": "Mark Parcel Picked Up",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/parcels/guest/guest-101/pickup/parcel-5001",
+              "host": ["{{baseUrl}}"],
+              "path": ["parcels", "guest", "guest-101", "pickup", "parcel-5001"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}

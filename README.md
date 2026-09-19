@@ -173,6 +173,10 @@ http://localhost:8080/swagger-ui/index.html
 
 You can inspect all available endpoints, schemas, and execute live API calls directly from the browser.
 
+### 4. Postman Collection
+
+A pre-configured Postman collection is included at [postman_collection.json](postman_collection.json). Import it into Postman to immediately execute all guest check-in, checkout, parcel intake, and pickup workflows.
+
 ---
 
 ## 📚 API Reference
@@ -218,16 +222,15 @@ Common error codes:
 
 The project includes unit and integration tests covering controllers, service validations, and database interactions.
 
-Run tests using:
+Run tests and generate JaCoCo code coverage reports:
 
 ```bash
-./gradlew test
+./gradlew test jacocoTestReport
 ```
 
-Test reports are generated at:
-```text
-build/reports/tests/test/index.html
-```
+Reports are generated at:
+- Test execution report: `build/reports/tests/test/index.html`
+- JaCoCo coverage report: `build/reports/jacoco/test/html/index.html`
 
 ---
 

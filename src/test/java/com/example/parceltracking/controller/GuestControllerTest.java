@@ -129,4 +129,18 @@ public class GuestControllerTest {
                 .andExpect(jsonPath("$.message").value("Guest has unclaimed parcels"));
     }
 
+    @Test
+    public void testCheckoutNonExistentGuest_shouldFail404() throws Exception {
+        mockMvc.perform(post("/guests/non-existent-999/checkout"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error").value("guest-404"));
+    }
+
+    @Test
+    public void testGetStatusNonExistentGuest_shouldReturnFalse() throws Exception {
+        mockMvc.perform(get("/guests/non-existent-999/status"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("false"));
+    }
+
 }
