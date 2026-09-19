@@ -18,13 +18,14 @@ An open-source, production-ready Spring Boot backend service designed for hospit
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
-  - [Database Setup with Docker](#1-database-setup-with-docker)
+  - [Database & Application Setup with Docker Compose](#1-database--application-setup-with-docker-compose)
   - [Running the Application](#2-running-the-application)
   - [Interactive API Documentation (Swagger)](#3-interactive-api-documentation-swagger)
 - [API Reference](#-api-reference)
 - [Testing](#-testing)
 - [Roadmap](#-roadmap)
 - [Contributing](#-contributing)
+- [Security](#-security)
 - [Releases](#-releases)
 - [License](#-license)
 
@@ -124,19 +125,25 @@ sequenceDiagram
 - **Docker**: Optional, for running PostgreSQL in a container
 - **Git**: For version control
 
-### 1. Database Setup with Docker
+### 1. Database & Application Setup with Docker Compose
 
-You can spin up the PostgreSQL database using the included Docker configuration:
+The simplest way to run both the PostgreSQL database and the backend service is using Docker Compose:
 
 ```bash
-# Build the PostgreSQL container image
-docker build -t parcel-postgres .
+# Start PostgreSQL database (in background)
+docker compose up -d postgres
 
-# Run the database container
-docker run -d -p 5432:5432 --name parcel-db parcel-postgres
+# Or start the entire stack (PostgreSQL + Spring Boot API)
+docker compose up -d
 ```
 
-Or connect to an existing local/remote PostgreSQL instance by configuring `src/main/resources/application.yaml`:
+Or connect to an existing local/remote PostgreSQL instance by configuring `src/main/resources/application.yaml` or setting environment variables:
+
+```bash
+export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/parcel_db
+export SPRING_DATASOURCE_USERNAME=postgres
+export SPRING_DATASOURCE_PASSWORD=your_password
+```
 
 ```yaml
 spring:
@@ -238,6 +245,12 @@ Current development priorities tracked in public issues:
 ## 🤝 Contributing
 
 Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, development workflow, and submitting pull requests.
+
+---
+
+## 🔒 Security
+
+We take the security of this project and user data seriously. Please see [SECURITY.md](SECURITY.md) for vulnerability reporting guidelines and supported versions.
 
 ---
 
